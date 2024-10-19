@@ -9,7 +9,7 @@ const awsconfig = {
         endpoints: [
           {
             name: "DynamoDBAPI",
-            endpoint: "https://YOUR_API_ENDPOINT", // replace with actual endpoint
+            endpoint: "https://jl44x2bganc4dbfjyfcqqr65nq.appsync-api.us-east-1.amazonaws.com/graphql", // replace with actual endpoint
             region: "YOUR_AWS_REGION"
           }
         ]
