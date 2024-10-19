@@ -1,0 +1,27 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hacks24-dev-3ba3e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::251294837678:role/amplify-hacks24-dev-3ba3e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::251294837678:role/amplify-hacks24-dev-3ba3e-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-hacks24-dev-3ba3e-deployment",
+      "UnauthRoleName": "amplify-hacks24-dev-3ba3e-unauthRole",
+      "StackName": "amplify-hacks24-dev-3ba3e",
+      "StackId": "arn:aws:cloudformation:us-east-1:251294837678:stack/amplify-hacks24-dev-3ba3e/95600c90-8e5c-11ef-a07c-1262aaa688f7",
+      "AmplifyAppId": "d384bqfjwy8lky"
+    },
+    "categories": {
+      "function": {
+        "hacks24Lambda": {
+          "deploymentBucketName": "amplify-hacks24-dev-3ba3e-deployment",
+          "s3Key": "amplify-builds/hacks24Lambda-386d7a41426c4e65586d-build.zip"
+        }
+      },
+      "api": {
+        "hacks24": {},
+        "apiREST": {}
+      }
+    }
+  }
+}

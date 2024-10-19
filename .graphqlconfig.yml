@@ -1,0 +1,12 @@
+projects:
+  hacks24:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - ./yo.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: .
