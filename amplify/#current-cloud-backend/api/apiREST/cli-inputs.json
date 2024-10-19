@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/items": {
+      "name": "/items",
+      "lambdaFunction": "hacks24Lambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

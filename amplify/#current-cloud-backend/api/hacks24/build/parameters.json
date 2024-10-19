@@ -1,0 +1,7 @@
+{
+    "AppSyncApiName": "hacks24",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "S3DeploymentBucket": "amplify-hacks24-dev-3ba3e-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/1b7e4414d7aeca7b9e39f0faff1d8b11b1156b15"
+}

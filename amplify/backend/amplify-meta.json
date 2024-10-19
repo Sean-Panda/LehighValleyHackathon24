@@ -1,0 +1,95 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hacks24-dev-3ba3e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::251294837678:role/amplify-hacks24-dev-3ba3e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::251294837678:role/amplify-hacks24-dev-3ba3e-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-hacks24-dev-3ba3e-deployment",
+      "UnauthRoleName": "amplify-hacks24-dev-3ba3e-unauthRole",
+      "StackName": "amplify-hacks24-dev-3ba3e",
+      "StackId": "arn:aws:cloudformation:us-east-1:251294837678:stack/amplify-hacks24-dev-3ba3e/95600c90-8e5c-11ef-a07c-1262aaa688f7",
+      "AmplifyAppId": "d384bqfjwy8lky"
+    }
+  },
+  "api": {
+    "hacks24": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "iwa2qmgyxbg53eug4invwh7equ",
+        "GraphQLAPIEndpointOutput": "https://jl44x2bganc4dbfjyfcqqr65nq.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-wt2ncmvgczfuvglrptucjwi6am"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hacks24-dev-3ba3e-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apihacks24"
+      },
+      "lastPushTimeStamp": "2024-10-19T21:43:07.223Z",
+      "lastPushDirHash": "jt6j1nS8iwpHdWRzQXATsyHHASg="
+    },
+    "apiREST": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "hacks24Lambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hacks24-dev-3ba3e-deployment/amplify-cfn-templates/api/apiREST-cloudformation-template.json",
+        "logicalId": "apiapiREST"
+      },
+      "lastPushTimeStamp": "2024-10-19T21:43:07.223Z",
+      "output": {
+        "ApiName": "apiREST",
+        "RootUrl": "https://b3ccj0i6wl.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "b3ccj0i6wl"
+      },
+      "lastPushDirHash": "nudN16O/mknqBxu/bkmfuKDc/VY="
+    }
+  },
+  "function": {
+    "hacks24Lambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2024-10-19T21:39:58.734Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-10-19T21:39:59.018Z",
+      "distZipFilename": "hacks24Lambda-386d7a41426c4e65586d-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-hacks24-dev-3ba3e-deployment",
+        "s3Key": "amplify-builds/hacks24Lambda-386d7a41426c4e65586d-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hacks24-dev-3ba3e-deployment/amplify-cfn-templates/function/hacks24Lambda-cloudformation-template.json",
+        "logicalId": "functionhacks24Lambda"
+      },
+      "lastPushTimeStamp": "2024-10-19T21:43:07.223Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::251294837678:role/hacks24LambdaRole6fceb097-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:251294837678:function:hacks24Lambda-dev",
+        "Name": "hacks24Lambda-dev",
+        "LambdaExecutionRole": "hacks24LambdaRole6fceb097-dev"
+      },
+      "lastPushDirHash": "xPYBEQGyKuw2mh0RKB0qEd56f3w="
+    }
+  }
+}
