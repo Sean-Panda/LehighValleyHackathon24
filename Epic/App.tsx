@@ -1,118 +1,91 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './src/screens/HomeScreen';
+import ChallengesScreen from './src/screens/ChallengesScreen';
+import ChallengeDetailScreen from './src/screens/ChallengeDetailScreen'; // Import the detailed screen
+import ProfileScreen from './src/screens/ProfileScreen'; // Import Profile screen
+import { Image } from 'react-native'; // Import Image component
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+// Stack Navigator for Challenges
+const ChallengesStack = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <Stack.Navigator initialRouteName="Challenges">
+      <Stack.Screen 
+        name="Challenges" 
+        component={ChallengesScreen} 
+        options={{ headerShown: false }} // Hide the header for this screen
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <Stack.Screen 
+        name="ChallengeDetail" 
+        component={ChallengeDetailScreen} 
+        options={{ headerShown: false }} // Hide the header for this screen as well
+      />
+    </Stack.Navigator>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const App: React.FC = () => {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle: {
+            backgroundColor: '#fff', // Customize tab bar background color
+            height: 80, // Set the desired height here
+            paddingBottom: 20, // Optional: Add some bottom padding
+            paddingTop: 5,
+          },
+        }}
+      >
+        <Tab.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{
+            headerShown: false, // Hide header for Home screen
+            tabBarIcon: ({ focused }) => (
+              <Image 
+                source={require('./src/assets/home-icon.png')} // Use your custom icon here
+                style={{ width: 30, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
+              />
+            ),
+          }}
+        />
+        {/* Use the stack navigator for Challenges */}
+        <Tab.Screen 
+          name="Challenges" 
+          component={ChallengesStack} 
+          options={{
+            headerShown: false, // Hide header for Challenges tab
+            tabBarIcon: ({ focused }) => (
+              <Image 
+                source={require('./src/assets/challenges-icon.png')} // Use your custom icon here
+                style={{ width: 30, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
+              />
+            ),
+          }}
+        />
+        {/* Add the Profile tab */}
+        <Tab.Screen 
+          name="Profile" 
+          component={ProfileScreen} 
+          options={{
+            headerShown: false, // Hide header for Profile tab
+            tabBarIcon: ({ focused }) => (
+              <Image 
+                source={require('./src/assets/profile.png')} // Use your custom icon here
+                style={{ width: 27, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
+              />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default App;
