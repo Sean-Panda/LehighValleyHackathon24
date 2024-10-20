@@ -12,7 +12,6 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import NavBar from '../components/NavBar';
 
-
 const leaderboardData = [
   { rank: 1, name: 'Tommy Gloomberg', score: 21, image: require('../assets/tommy_avatar.png') },
   { rank: 2, name: 'Jenny Smith', score: 16, image: require('../assets/jenny_avatar.png') },
@@ -21,16 +20,18 @@ const leaderboardData = [
   { rank: 5, name: 'Shelby Angels', score: 8, image: require('../assets/shelby_avatar.png') },
 ];
 
-const ChallengeDetailScreen = ({ navigation }) => { // Added navigation prop
+// Import the chart image
+const chartImage = require('../assets/chart.png');
+
+const ChallengeDetailScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [progress, setProgress] = useState(9); // Default progress value
+  const [progress, setProgress] = useState(9);
   const [newProgress, setNewProgress] = useState(String(progress));
   const progressPercentage = (progress / 10) * 100;
 
-  // Function to handle the submission of new progress value
   const handleUpdateProgress = () => {
-    setProgress(Number(newProgress)); // Update the progress value
-    setModalVisible(false); // Close the modal
+    setProgress(Number(newProgress));
+    setModalVisible(false);
   };
 
   return (
@@ -64,7 +65,6 @@ const ChallengeDetailScreen = ({ navigation }) => { // Added navigation prop
           </View>
         </View>
 
-        {/* Progress bar */}
         <View style={styles.progressBarContainer}>
           <View style={[styles.progressBar, { width: `${progressPercentage}%` }]} />
         </View>
@@ -77,6 +77,13 @@ const ChallengeDetailScreen = ({ navigation }) => { // Added navigation prop
           <Text style={styles.updateButtonText}>Update</Text>
         </TouchableOpacity>
       </View>
+
+      {/* New Chart Image */}
+      <View style={styles.chartContainer}>
+        <Image source={chartImage} style={styles.chartImage} />
+      </View>
+      <View style={styles.verticalLine} />
+      <View style={styles.horizontalLine} />
 
       {/* Leaderboard */}
       <View style={styles.leaderboardContainer}>
@@ -173,7 +180,7 @@ const styles = StyleSheet.create({
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#4b0082',
+    backgroundColor: '#3c43d9',
   },
   progressLabel: {
     textAlign: 'center',
@@ -182,7 +189,7 @@ const styles = StyleSheet.create({
   },
   updateButton: {
     marginTop: 20,
-    backgroundColor: '#4b0082',
+    backgroundColor: '#3c43d9',
     padding: 10,
     borderRadius: 5,
   },
@@ -261,6 +268,15 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  // Styles for the chart image
+  chartContainer: {
+    alignItems: 'center',
+  },
+  chartImage: {
+    width: '100%', // Adjust based on your design requirements
+    height: 300,   // Adjust height as necessary
+    resizeMode: 'contain',
   },
 });
 

@@ -29,6 +29,39 @@ const ChallengeOverview = () => {
           <Text style={styles.challengeProgress}>Your Progress: 1 day (#5)</Text>
         </View>
       </View>
+      {/* Additional Challenges */}
+      <View style={styles.challengeItem}>
+        <Image source={require('../assets/investments.png')} style={styles.challengeImage} />
+        <View style={styles.challengeTextContainer}>
+          <Text style={styles.challengeTitle}>Investment Insights</Text>
+          <Text style={styles.challengeDescription}>Research and invest in one new stock this week</Text>
+          <Text style={styles.challengeProgress}>Your Progress: 1 stock (#6)</Text>
+        </View>
+      </View>
+      <View style={styles.challengeItem}>
+        <Image source={require('../assets/coffee.png')} style={styles.challengeImage} />
+        <View style={styles.challengeTextContainer}>
+          <Text style={styles.challengeTitle}>Coffee Chats</Text>
+          <Text style={styles.challengeDescription}>Have at least 3 coffee chats with professionals</Text>
+          <Text style={styles.challengeProgress}>Your Progress: 2 chats (#7)</Text>
+        </View>
+      </View>
+      <View style={styles.challengeItem}>
+        <Image source={require('../assets/expenses.png')} style={styles.challengeImage} />
+        <View style={styles.challengeTextContainer}>
+          <Text style={styles.challengeTitle}>Money Management</Text>
+          <Text style={styles.challengeDescription}>Track your spending for the week</Text>
+          <Text style={styles.challengeProgress}>Your Progress: $150 tracked (#8)</Text>
+        </View>
+      </View>
+      <View style={styles.challengeItem}>
+        <Image source={require('../assets/fitness.png')} style={styles.challengeImage} />
+        <View style={styles.challengeTextContainer}>
+          <Text style={styles.challengeTitle}>Fitness Challenge</Text>
+          <Text style={styles.challengeDescription}>Exercise for at least 30 minutes, 5 times a week</Text>
+          <Text style={styles.challengeProgress}>Your Progress: 3 sessions (#9)</Text>
+        </View>
+      </View>
     </View>
   );
 };

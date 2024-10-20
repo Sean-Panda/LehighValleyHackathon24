@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import ChallengesScreen from './src/screens/ChallengesScreen';
 import ChallengeDetailScreen from './src/screens/ChallengeDetailScreen'; // Import the detailed screen
+import ProfileScreen from './src/screens/ProfileScreen'; // Import Profile screen
 import { Image } from 'react-native'; // Import Image component
 
 const Tab = createBottomTabNavigator();
@@ -44,7 +45,7 @@ const App: React.FC = () => {
             tabBarIcon: ({ focused }) => (
               <Image 
                 source={require('./src/assets/home-icon.png')} // Use your custom icon here
-                style={{ width: 30, height: 30, tintColor: focused ? '#007AFF' : '#gray' }} // Change color based on focus
+                style={{ width: 30, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
               />
             ),
           }}
@@ -58,7 +59,21 @@ const App: React.FC = () => {
             tabBarIcon: ({ focused }) => (
               <Image 
                 source={require('./src/assets/challenges-icon.png')} // Use your custom icon here
-                style={{ width: 30, height: 30, tintColor: focused ? '#007AFF' : '#gray' }} // Change color based on focus
+                style={{ width: 30, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
+              />
+            ),
+          }}
+        />
+        {/* Add the Profile tab */}
+        <Tab.Screen 
+          name="Profile" 
+          component={ProfileScreen} 
+          options={{
+            headerShown: false, // Hide header for Profile tab
+            tabBarIcon: ({ focused }) => (
+              <Image 
+                source={require('./src/assets/profile.png')} // Use your custom icon here
+                style={{ width: 30, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
               />
             ),
           }}
