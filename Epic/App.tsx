@@ -1,32 +1,71 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import ChallengesScreen from './src/screens/ChallengesScreen';
+import ChallengeDetailScreen from './src/screens/ChallengeDetailScreen'; // Import the detailed screen
+import { Image } from 'react-native'; // Import Image component
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-export default function App() {
+// Stack Navigator for Challenges
+const ChallengesStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Challenges">
+      <Stack.Screen 
+        name="Challenges" 
+        component={ChallengesScreen} 
+        options={{ headerShown: false }} // Hide the header for this screen
+      />
+      <Stack.Screen 
+        name="ChallengeDetail" 
+        component={ChallengeDetailScreen} 
+        options={{ headerShown: false }} // Hide the header for this screen as well
+      />
+    </Stack.Navigator>
+  );
+};
+
+const App: React.FC = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = focused ? 'home' : 'home-outline';
-            } else if (route.name === 'Challenges') {
-              iconName = focused ? 'checkmark-circle' : 'checkmark-circle-outline';
-            }
-
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
+        screenOptions={{
+          tabBarStyle: { backgroundColor: '#fff' }, // Customize tab bar style if needed
+        }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        {/* Add other screens as needed */}
+        <Tab.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{
+            headerShown: false, // Hide header for Home screen
+            tabBarIcon: ({ focused }) => (
+              <Image 
+                source={require('./src/assets/home-icon.png')} // Use your custom icon here
+                style={{ width: 30, height: 30, tintColor: focused ? '#007AFF' : '#gray' }} // Change color based on focus
+              />
+            ),
+          }}
+        />
+        {/* Use the stack navigator for Challenges */}
+        <Tab.Screen 
+          name="Challenges" 
+          component={ChallengesStack} 
+          options={{
+            headerShown: false, // Hide header for Challenges tab
+            tabBarIcon: ({ focused }) => (
+              <Image 
+                source={require('./src/assets/challenges-icon.png')} // Use your custom icon here
+                style={{ width: 30, height: 30, tintColor: focused ? '#007AFF' : '#gray' }} // Change color based on focus
+              />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+export default App;
