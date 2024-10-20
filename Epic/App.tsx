@@ -34,7 +34,12 @@ const App: React.FC = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarStyle: { backgroundColor: '#fff' }, // Customize tab bar style if needed
+          tabBarStyle: {
+            backgroundColor: '#fff', // Customize tab bar background color
+            height: 80, // Set the desired height here
+            paddingBottom: 20, // Optional: Add some bottom padding
+            paddingTop: 5,
+          },
         }}
       >
         <Tab.Screen 
@@ -73,7 +78,7 @@ const App: React.FC = () => {
             tabBarIcon: ({ focused }) => (
               <Image 
                 source={require('./src/assets/profile.png')} // Use your custom icon here
-                style={{ width: 30, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
+                style={{ width: 27, height: 30, tintColor: focused ? '#3c43d9' : 'gray' }} // Change color based on focus
               />
             ),
           }}

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+// Import your podium image
+const podiumImage = require('../assets/podium.png');
+
 const Leaderboard = () => {
   const [currentLeaderboard, setCurrentLeaderboard] = useState('savings');
 
@@ -35,10 +38,13 @@ const Leaderboard = () => {
 
   const renderLeaderboard = (data) => {
     return data.map((item, index) => (
-      <View key={index} style={[styles.leaderItem, item.isFirst ? styles.leaderFirst : {}]}>
+      <View
+        key={index}
+        style={[styles.leaderItem, item.isFirst ? styles.leaderFirst : index === 0 ? styles.leaderSecond : styles.leaderThird]}
+      >
         <Text style={styles.leaderScore}>{item.score}</Text>
-        <Image source={item.avatar} style={styles.avatar} />
         <Text style={styles.leaderName}>{item.name}</Text>
+        <Image source={item.avatar} style={styles.avatar} />
       </View>
     ));
   };
@@ -56,6 +62,9 @@ const Leaderboard = () => {
 
   return (
     <LinearGradient colors={['#4a2a94', '#3c43d9']} style={styles.container}>
+      {/* Static podium image */}
+      <Image source={podiumImage} style={styles.podiumImage} />
+      
       <Text style={styles.title}>Leaderboards</Text>
       <Text style={styles.subTitle}>{`${currentLeaderboard.charAt(0).toUpperCase() + currentLeaderboard.slice(1)} Challenge`}</Text>
       <Text style={styles.challengeText}>
@@ -84,12 +93,21 @@ const styles = StyleSheet.create({
   container: {
     padding: 30,
     paddingTop: 60,
+    position: 'relative',
+  },
+  podiumImage: {
+    position: 'absolute',
+    width: '106%', // Decrease width to make it smaller
+    height: '50%', // Set a height to control the image size
+    top: 260, // Adjust the position as necessary
+    left: '5%', // Center the image horizontally
   },
   title: {
     fontSize: 21,
     color: '#fff',
     fontWeight: 'bold',
     marginBottom: 25,
+    zIndex: 1, // Bring to front
   },
   subTitle: {
     fontSize: 18,
@@ -97,34 +115,44 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 10,
+    zIndex: 1,
   },
   challengeText: {
     fontSize: 14,
     color: '#ddd',
     textAlign: 'center',
     marginBottom: 4,
+    zIndex: 1,
   },
   progressText: {
     fontSize: 12,
     color: '#fff',
     textAlign: 'center',
     marginBottom: 30,
+    zIndex: 1,
   },
   leaderboardContainer: {
+    marginTop: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    position: 'relative',
+    zIndex: 1,
   },
   leaderItem: {
     alignItems: 'center',
-    backgroundColor: '#6c49cd',
     padding: 10,
     borderRadius: 10,
     marginHorizontal: 5,
   },
   leaderFirst: {
-    backgroundColor: '#8a5fd1',
-    paddingVertical: 20,
+    marginTop: -14, // Higher position for 1st place
+  },
+  leaderSecond: {
+    marginTop: 18, // Slightly lower position for 2nd place
+  },
+  leaderThird: {
+    marginTop: 56, // Lower position for 3rd place
+    marginBottom: -15,
   },
   leaderScore: {
     fontSize: 24,
@@ -133,14 +161,14 @@ const styles = StyleSheet.create({
   },
   leaderName: {
     fontSize: 16,
+    paddingBottom: 20,
     color: '#fff',
     marginTop: 5,
   },
   avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginVertical: 10,
+    width: 60,
+    height: 60,
+    borderRadius: 100,
   },
   arrow: {
     fontSize: 32,
