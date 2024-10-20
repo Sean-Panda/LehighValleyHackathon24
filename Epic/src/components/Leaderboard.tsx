@@ -1,0 +1,106 @@
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
+
+const Leaderboard = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Leaderboards</Text>
+      <Text style={styles.subTitle}>Savings Challenge</Text>
+      <Text style={styles.challengeText}>Save at least $20 per week on expenses</Text>
+      <Text style={styles.progressText}>Your Progress: $34 (#2)</Text>
+
+      <View style={styles.leaderboardContainer}>
+        <Text style={styles.arrow}>&lt;</Text>
+        <View style={styles.leaderItem}>
+            <Text style={styles.leaderScore}>34</Text>
+            <Image source={require('../assets/sean_avatar.png')} style={styles.avatar} />
+            <Text style={styles.leaderName}>Sean</Text>
+        </View>
+        <View style={[styles.leaderItem, styles.leaderFirst]}>
+            <Text style={styles.leaderScore}>42</Text>
+            <Image source={require('../assets/tommy_avatar.png')} style={styles.avatar} />
+            <Text style={styles.leaderName}>Tommy</Text>
+        </View>
+        <View style={styles.leaderItem}>
+            <Text style={styles.leaderScore}>24</Text>
+            <Image source={require('../assets/shelby_avatar.png')} style={styles.avatar} />
+            <Text style={styles.leaderName}>Shelby</Text>
+        </View>
+        <Text style={styles.arrow}>&gt;</Text>
+        </View>
+
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    backgroundColor: '#4b2ca3',
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+  },
+  title: {
+    fontSize: 24,
+    color: '#fff',
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  subTitle: {
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 5,
+  },
+  challengeText: {
+    fontSize: 16,
+    color: '#ddd',
+    textAlign: 'center',
+    marginBottom: 5,
+  },
+  progressText: {
+    fontSize: 16,
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  leaderboardContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  leaderItem: {
+    alignItems: 'center',
+    backgroundColor: '#6c49cd',
+    padding: 10,
+    borderRadius: 10,
+    marginHorizontal: 5,
+  },
+  leaderFirst: {
+    backgroundColor: '#8a5fd1',
+    paddingVertical: 20,
+  },
+  leaderScore: {
+    fontSize: 24,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  leaderName: {
+    fontSize: 16,
+    color: '#fff',
+    marginTop: 5,
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginVertical: 10,
+  },
+  arrow: {
+    fontSize: 32,
+    color: '#fff',
+  },
+});
+
+export default Leaderboard;
