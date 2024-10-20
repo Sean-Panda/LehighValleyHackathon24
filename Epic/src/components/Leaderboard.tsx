@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Leaderboard = () => {
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={['#4a2a94', '#3c43d9']} style={styles.container}>
       <Text style={styles.title}>Leaderboards</Text>
       <Text style={styles.subTitle}>Savings Challenge</Text>
       <Text style={styles.challengeText}>Save at least $20 per week on expenses</Text>
@@ -12,58 +13,55 @@ const Leaderboard = () => {
       <View style={styles.leaderboardContainer}>
         <Text style={styles.arrow}>&lt;</Text>
         <View style={styles.leaderItem}>
-            <Text style={styles.leaderScore}>34</Text>
-            <Image source={require('../assets/sean_avatar.png')} style={styles.avatar} />
-            <Text style={styles.leaderName}>Sean</Text>
+          <Text style={styles.leaderScore}>34</Text>
+          <Image source={require('../assets/sean_avatar.png')} style={styles.avatar} />
+          <Text style={styles.leaderName}>Sean</Text>
         </View>
         <View style={[styles.leaderItem, styles.leaderFirst]}>
-            <Text style={styles.leaderScore}>42</Text>
-            <Image source={require('../assets/tommy_avatar.png')} style={styles.avatar} />
-            <Text style={styles.leaderName}>Tommy</Text>
+          <Text style={styles.leaderScore}>42</Text>
+          <Image source={require('../assets/tommy_avatar.png')} style={styles.avatar} />
+          <Text style={styles.leaderName}>Tommy</Text>
         </View>
         <View style={styles.leaderItem}>
-            <Text style={styles.leaderScore}>24</Text>
-            <Image source={require('../assets/shelby_avatar.png')} style={styles.avatar} />
-            <Text style={styles.leaderName}>Shelby</Text>
+          <Text style={styles.leaderScore}>24</Text>
+          <Image source={require('../assets/shelby_avatar.png')} style={styles.avatar} />
+          <Text style={styles.leaderName}>Shelby</Text>
         </View>
         <Text style={styles.arrow}>&gt;</Text>
-        </View>
-
-    </View>
+      </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    backgroundColor: '#4b2ca3',
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
+    padding: 30,
+    paddingTop: 60,
   },
   title: {
-    fontSize: 24,
+    fontSize: 21,
     color: '#fff',
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 25,
   },
   subTitle: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: 10,
   },
   challengeText: {
-    fontSize: 16,
+    fontSize: 12,
     color: '#ddd',
     textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: 4,
   },
   progressText: {
-    fontSize: 16,
+    fontSize: 12,
     color: '#fff',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   leaderboardContainer: {
     flexDirection: 'row',

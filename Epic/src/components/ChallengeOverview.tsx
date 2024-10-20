@@ -4,6 +4,7 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 const ChallengeOverview = () => {
   return (
     <View style={styles.container}>
+            <Text style={styles.title}>Challenge Overview</Text>
       <View style={styles.challengeItem}>
         <Image source={require('../assets/savingChallenge.png')} style={styles.challengeImage} />
         <View style={styles.challengeTextContainer}>
@@ -35,6 +36,11 @@ const ChallengeOverview = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+  },
+  title: {
+    fontSize: 21,
+    fontWeight: 'bold',
+    marginBottom: 25,
   },
   challengeItem: {
     flexDirection: 'row',

@@ -1,14 +1,17 @@
 import React from 'react';
-import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import Leaderboard from '../components/Leaderboard';
 import ChallengeOverview from '../components/ChallengeOverview';
+import NavBar from '../components/NavBar';
 
 const HomeScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <Leaderboard />
-      <ChallengeOverview />
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView>
+        <Leaderboard />
+        <ChallengeOverview />
+      </ScrollView>
+    </View>
   );
 };
 
